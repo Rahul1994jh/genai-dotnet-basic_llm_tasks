@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/basic_llm_tasks/">
+    <Project Path="Classification/Classification.csproj" />
+    <Project Path="SentimentAnalysis/SentimentAnalysis.csproj" />
+    <Project Path="Summarization/Summarization.csproj" />
+    <Project Path="TextCompletion/TextCompletion.csproj" />
+  </Folder>
+</Solution>
