@@ -5,5 +5,8 @@
     <Project Path="Summarization/Summarization.csproj" />
     <Project Path="TextCompletion/TextCompletion.csproj" />
   </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="TextExtraction/TextExtraction.csproj" />
 </Solution>

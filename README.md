@@ -41,6 +41,16 @@ Demonstrates fundamental chat completion capabilities:
 
 **Use Cases**: Chatbots, virtual assistants, question answering, content generation
 
+### 5. **[TextExtraction](./TextExtraction/README.md)**
+Extracts structured information from unstructured car listing text:
+- Strongly-typed data extraction using `GetResponseAsync<T>`
+- Parse make, model, year, mileage, pricing details
+- Handle Sale, Lease, and Rent availability types
+- Batch processing of multiple listings
+- Graceful handling of missing data with nullable types
+
+**Use Cases**: Automotive marketplace data processing, price comparison systems, inventory management, classified ads parsing
+
 ## 🏗️ Common Architecture
 
 All projects share a consistent architecture:
@@ -92,7 +102,7 @@ All projects share a consistent architecture:
    dotnet user-secrets set "GitHubToken" "your-github-token-here"
    ```
    
-   Repeat for each project (Summarization, Classification, TextCompletion).
+   Repeat for each project (Summarization, Classification, TextCompletion, TextExtraction).
 
 3. **Configure Model Settings** (Optional)
    
@@ -164,6 +174,12 @@ basic_llm_tasks/
 │   ├── appsettings.json
 │   ├── TextCompletion.csproj
 │   └── README.md
+├── TextExtraction/
+│   ├── Program.cs
+│   ├── CarDetails.cs
+│   ├── appsettings.json
+│   ├── TextExtraction.csproj
+│   └── README.md
 └── README.md (this file)
 ```
 
@@ -175,6 +191,7 @@ We recommend exploring the projects in this order:
 2. **Classification** - Learn about structured output and categorization
 3. **Summarization** - Explore content transformation
 4. **SentimentAnalysis** - Master complex structured analysis with JSON output
+5. **TextExtraction** - Advanced strongly-typed extraction with custom models
 
 ## 🔗 Additional Resources
 
