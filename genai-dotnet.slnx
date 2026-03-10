@@ -5,4 +5,5 @@
     <Project Path="Summarization/Summarization.csproj" />
     <Project Path="TextCompletion/TextCompletion.csproj" />
   </Folder>
+  <Project Path="TextExtraction/TextExtraction.csproj" />
 </Solution>
