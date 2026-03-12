@@ -174,35 +174,26 @@ Local projects use simplified architecture:
 
 #### Ollama Projects
 
-1. **Install Ollama**
-   - Download from [ollama.ai](https://ollama.ai)
-   - Install and start the server
+1. **Install Ollama** (see detailed guide below)
 
 2. **Pull the Model**
    ```bash
    ollama pull llama3.2
    ```
 
-3. **Run a Project**
+3. **Verify Ollama is Running**
+   ```bash
+   curl http://localhost:11434
+   ```
+   Should return: `Ollama is running`
+
+4. **Run a Project**
    ```bash
    cd TextCompletion_Ollama
    dotnet run
    ```
 
 No configuration files or API keys needed! 🎉
-
-3. **Configure Model Settings** (Optional)
-   
-   Each project has an `appsettings.json` file where you can customize:
-   - AI model (default: gpt-4o-mini)
-   - GitHub Models endpoint
-   - Project-specific settings
-
-4. **Run a Project**
-   ```bash
-   cd SentimentAnalysis
-   dotnet run
-   ```
 
 ### Getting a GitHub Token
 
@@ -211,12 +202,166 @@ No configuration files or API keys needed! 🎉
 3. Enable access to GitHub Models
 4. Copy the token and use it in user secrets
 
-### Installing Ollama
+### Installing and Running Ollama Locally
 
-1. Visit [ollama.ai](https://ollama.ai) and download for your OS
-2. Install and run: `ollama serve`
-3. Pull models: `ollama pull llama3.2`
-4. Verify: `ollama list`
+Ollama allows you to run powerful AI models completely on your own machine. Here's how to set it up:
+
+#### Windows
+
+1. **Download Ollama**
+   - Visit [ollama.ai/download](https://ollama.ai/download)
+   - Click "Download for Windows"
+   - Download the installer (OllamaSetup.exe)
+
+2. **Install Ollama**
+   - Run the downloaded installer
+   - Follow the installation wizard
+   - Ollama will automatically start after installation
+
+3. **Verify Installation**
+   ```powershell
+   ollama --version
+   ```
+   Should display the version number (e.g., `ollama version 0.1.x`)
+
+4. **Pull the Llama 3.2 Model**
+   ```powershell
+   ollama pull llama3.2
+   ```
+   This downloads the model (~2-4GB). First download takes a few minutes.
+
+5. **Verify Model is Ready**
+   ```powershell
+   ollama list
+   ```
+   Should show `llama3.2` in the list
+
+6. **Test the Model** (Optional)
+   ```powershell
+   ollama run llama3.2 "Hello, how are you?"
+   ```
+
+#### macOS
+
+1. **Download Ollama**
+   - Visit [ollama.ai/download](https://ollama.ai/download)
+   - Click "Download for macOS"
+   - Download the Ollama.app
+
+2. **Install Ollama**
+   - Open the downloaded .dmg file
+   - Drag Ollama to Applications folder
+   - Launch Ollama from Applications
+
+3. **Verify Installation**
+   ```bash
+   ollama --version
+   ```
+
+4. **Pull the Model**
+   ```bash
+   ollama pull llama3.2
+   ```
+
+5. **Verify**
+   ```bash
+   ollama list
+   curl http://localhost:11434
+   ```
+
+#### Linux
+
+1. **Install Ollama**
+   ```bash
+   curl -fsSL https://ollama.ai/install.sh | sh
+   ```
+
+2. **Start Ollama Service**
+   ```bash
+   ollama serve
+   ```
+   Or if installed as a service:
+   ```bash
+   sudo systemctl start ollama
+   sudo systemctl enable ollama  # Start on boot
+   ```
+
+3. **Pull the Model**
+   ```bash
+   ollama pull llama3.2
+   ```
+
+4. **Verify**
+   ```bash
+   ollama list
+   curl http://localhost:11434
+   ```
+
+#### Troubleshooting Ollama
+
+**Ollama Won't Start**
+- Windows: Check Task Manager for `ollama.exe` process
+- macOS: Open Ollama.app from Applications
+- Linux: Run `ollama serve` manually or check service status: `systemctl status ollama`
+
+**Port Already in Use**
+```bash
+# Find what's using port 11434
+netstat -ano | findstr :11434  # Windows
+lsof -i :11434                 # macOS/Linux
+
+# Kill the process or change Ollama port
+$env:OLLAMA_HOST="0.0.0.0:11435"  # Windows
+export OLLAMA_HOST=0.0.0.0:11435   # macOS/Linux
+```
+
+**Model Download Fails**
+- Check internet connection
+- Try a smaller model first: `ollama pull phi3`
+- Check available disk space (models need 2-8GB)
+
+**Slow Performance**
+- Ollama automatically uses GPU if available (NVIDIA CUDA)
+- For CPU-only: Use smaller models (phi3, llama3.2:1b)
+- Close other applications to free up RAM
+- Recommended: 16GB+ RAM, NVIDIA GPU for best performance
+
+#### Available Models
+
+```bash
+# Small & Fast (~2GB)
+ollama pull phi3
+
+# Balanced (~4GB) - Default
+ollama pull llama3.2
+
+# Larger & More Capable (~8GB)
+ollama pull llama3.1
+
+# Code-focused (~4GB)
+ollama pull codellama
+
+# Efficient (~4GB)
+ollama pull mistral
+```
+
+#### Managing Ollama
+
+```bash
+# List downloaded models
+ollama list
+
+# Remove a model to free space
+ollama rm llama3.2
+
+# Stop Ollama
+# Windows: Close from system tray
+# Linux: sudo systemctl stop ollama
+# macOS: Quit from menu bar
+
+# Update Ollama
+# Download latest installer from ollama.ai
+```
 
 ## 🛠️ Technologies Used
 
