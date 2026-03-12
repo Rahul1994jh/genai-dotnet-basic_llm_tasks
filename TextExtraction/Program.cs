@@ -21,7 +21,7 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 
 // Retrieve GitHub Models API token from user secrets
 // Throws an exception if the token is not configured
-ApiKeyCredential credential = new ApiKeyCredential(configuration["GitHubModels:Token"] ?? throw new InvalidOperationException("GitHub token not found in user secrets. Please configure 'GitHubModels:Token'."));
+ApiKeyCredential credential = new(configuration["GitHubModels:Token"] ?? throw new InvalidOperationException("GitHub token not found in user secrets. Please configure 'GitHubModels:Token'."));
 
 #endregion
 

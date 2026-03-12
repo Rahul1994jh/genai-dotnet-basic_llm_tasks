@@ -2,11 +2,14 @@
   <Folder Name="/basic_llm_tasks/">
     <Project Path="Classification/Classification.csproj" />
     <Project Path="SentimentAnalysis/SentimentAnalysis.csproj" />
+    <Project Path="SentimentAnalysis_ollama/SentimentAnalysis_Ollama.csproj" Id="08d82d3c-af79-4998-94a7-06b28c749a84" />
     <Project Path="Summarization/Summarization.csproj" />
     <Project Path="TextCompletion/TextCompletion.csproj" />
+    <Project Path="TextCompletion_Ollama/TextCompletion_Ollama.csproj" Id="6c360f04-cbad-45e3-938e-0cf613a6fb32" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path="README.md" />
   </Folder>
+  <Project Path="ChatApplication/ChatApplication.csproj" Id="193de600-ccf5-40f7-867c-6d3a6f4e04ad" />
   <Project Path="TextExtraction/TextExtraction.csproj" />
 </Solution>
